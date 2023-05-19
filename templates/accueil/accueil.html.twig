@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Magasin{% endblock %}
+
+{% block body %}
+
+<div class="header">
+    <img src="{{asset ('img/icono.png')}}" alt="logo" width=125 height=125>
+    <h1>Bonjour cher client !</h1>
+    <a href="{{ path('app_listepro') }}">Accéder liste produits</a>
+    <br>
+    <a href="{{ path('app_commentaire') }}">Accéder liste commentaires</a>
+</div>
+
+<h2>Derniers produits ajoutés</h2>
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for produit in posseder %}
+            <tr>
+                <td>{{ produit.id }}</td>
+                <td>{{ produit.nom }}</td>
+                <td>{{ produit.description }}</td>
+                <td>
+                {% if produit.image %}
+                    <img src="{{ produit.image }}" alt="Image" width="200">
+                {% endif %}
+                </td>
+                <td>{{ produit.stock }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Pas de produits trouvés</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

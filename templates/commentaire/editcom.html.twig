@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Commentaire{% endblock %}
+
+{% block body %}
+    <h1>Modifier Commentaire</h1>
+
+    <a href="{{ path('app_commentaire') }}">Retour a la liste de commentaires</a>
+
+    {{ include('commentaire/erasecom.html.twig') }}
+
+{% endblock %}
+

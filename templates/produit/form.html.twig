@@ -1,0 +1,11 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div class="form-group">
+    <br>
+        {% if produit.image %}
+            <img src="{{ produit.image }}" alt="Image" width="200">
+        {% endif %}
+        <br>
+    </div>
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

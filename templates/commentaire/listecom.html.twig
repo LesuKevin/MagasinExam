@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commentaires{% endblock %}
+
+{% block body %}
+
+<div class="header">
+    <img src="{{asset ('img/icono.png')}}" alt="logo" width=125 height=125>
+    <a href="{{ path('app_accueil_index') }}">Retour accueil</a>
+</div>
+
+<table class="table">
+        <tbody>
+        {% for commentaire in posseder %}
+            <tr>
+                <td>{{ commentaire.id }}</td>
+                <td>{{ commentaire.titre }}</td>
+                <td>{{ commentaire.contenu }}</td>
+                <a href="{{ path('app_commentaire_edit', {'id': commentaire.id}) }}">Modifier</a>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Pas de commentaires trouvés</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit{% endblock %}
+
+{% block body %}
+    <h1>Produit</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ produit.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ produit.nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ produit.description }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{% if produit.image %}
+                    <img src="{{ produit.image }}" alt="Image" width="200">
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Stock</th>
+                <td>{{ produit.stock }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_listepro') }}">Retour liste</a>
+
+    <h2>Commentaires</h2>
+    <table class="table">
+        <tbody>
+            {% for commentaire in produit.posseder %}
+                <tr>
+                    <td>{{ commentaire.id }}</td>
+                    <td>{{ commentaire.titre }}</td>
+                    <td>{{ commentaire.contenu }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Aucun commentaire trouvé</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Ajouter un commentaire</h2>
+    {{ render(controller('App\\Controller\\CommentaireController::new', {'id': produit.id})) }}
+{% endblock %}

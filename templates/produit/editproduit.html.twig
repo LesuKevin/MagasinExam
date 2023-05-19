@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Produit{% endblock %}
+
+{% block body %}
+    <h1>Modifier le Produit</h1>
+
+    <h2>Dans le champ image il faut mettre une url.</h2>
+
+    {{ include('produit/form.html.twig', {'button_label': 'Mettre a jour'}) }}
+    <br>
+    <a href="{{ path('app_listepro') }}">Retour a la liste</a>
+
+    {{ include('produit/eraseproduit.html.twig') }}
+
+{% endblock %}
+
